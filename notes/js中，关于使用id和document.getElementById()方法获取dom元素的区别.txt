@@ -1,0 +1,5 @@
+https://blog.csdn.net/dreamjay1997/article/details/80505190
+
+第一种直接使用id获取dom元素的方法，只能在window这个全局变量中没有以此为名字的属性时才会生效
+
+但第二种方法却不会遇到这种问题

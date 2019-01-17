@@ -1,0 +1,130 @@
+package main
+
+import "fmt"
+
+func main() {
+	//未考虑空的二叉树
+	arr := []int{1, 2, 4}
+	fmt.Println(arr)
+	// t := nextPermutation(arr)
+	// fmt.Println(t)
+	// fmt.Println(previousPermuation(arr))
+	// fmt.Println(permutationIndex(arr))
+	fmt.Println(permutationIndex1(arr))
+
+}
+
+//下一个排列
+func nextPermutation(nums []int) []int {
+	// write your code here
+	l := len(nums)
+	for i := l - 2; i >= 0; i-- {
+		for j := l - 1; j > i; j-- {
+			if nums[i] < nums[j] {
+				nums[i], nums[j] = nums[j], nums[i]
+				return sort(nums, i+1)
+			}
+		}
+		if i == 0 {
+			return sort(nums, 0) //最后一个排列的下一个排列为第一个排列
+		}
+	}
+	return nums
+}
+
+//升序冒泡排序
+func sort(num []int, n int) []int {
+	for i := n; i < len(num); i++ {
+		for j := i + 1; j < len(num); j++ {
+			if num[i] > num[j] {
+				num[i], num[j] = num[j], num[i]
+			}
+		}
+	}
+	return num
+}
+
+//降序冒泡排序
+func sortdesc(num []int, n int) []int {
+	for i := n; i < len(num); i++ {
+		for j := i + 1; j < len(num); j++ {
+			if num[i] < num[j] {
+				num[i], num[j] = num[j], num[i]
+			}
+		}
+	}
+	return num
+}
+
+//上一个排列
+func previousPermuation(nums []int) []int {
+	l := len(nums)
+	for i := l - 2; i >= 0; i-- {
+		if nums[i] > nums[i+1] {
+			for j := l - 1; j > i; j-- {
+				if nums[i] > nums[j] {
+					nums[i], nums[j] = nums[j], nums[i]
+					return sortdesc(nums, i+1)
+				}
+			}
+		}
+		if i == 0 {
+			return sortdesc(nums, 0) //第一个排列的上一个排列为最后一个排列
+		}
+	}
+	return nums
+}
+
+//排列序号 统计上一个排列直到第一个 时间复杂度大
+var k int64 = 0
+var s = 1
+
+func permutationIndex(A []int) int64 {
+	// write your code here
+	for s != 0 {
+		previous(A)
+	}
+	return k
+}
+func previous(nums []int) []int {
+	l := len(nums)
+	for i := l - 2; i >= 0; i-- {
+		if nums[i] > nums[i+1] {
+			for j := l - 1; j > i; j-- {
+				if nums[i] > nums[j] {
+					nums[i], nums[j] = nums[j], nums[i]
+					k++
+					return sortdesc(nums, i+1)
+				}
+			}
+		}
+		if i == 0 {
+			k++
+			s = 0
+		}
+	}
+	return nums
+}
+
+//阶乘统计不含重复数字的排列
+var t int
+var p int64 = 0
+
+func permutationIndex1(A []int) int64 {
+	for i := 0; i < len(A); i++ {
+		for j := i + 1; j < len(A); j++ {
+			if A[i] > A[j] {
+				t++
+			}
+		}
+		p = p + int64(factorial(len(A)-i-1)*t)
+		t = 0
+	}
+	return p + 1
+}
+func factorial(n int) int { //阶乘
+	if n == 0 {
+		return 1
+	}
+	return factorial(n-1) * n
+}

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>任务</title>
+		<script src="/static/wx/template/mui/js/mui.min.js"></script>
+		<link href="/static/wx/template/mui/css/mui.min.css" rel="stylesheet" />
+		<link href="/static/wx/template/css/app.css" rel="stylesheet" />
+		<link href="/static/wx/dropload/dropload.css" rel="stylesheet" />
+
+
+		<link href="/static/new.css" rel="stylesheet" />
+		
+	</head>
+	<body>
+		<div class="mui-content">
+			<div class="mt-user">
+				<div class="mt-portrait"><img {{if and (.memberinfo.portrait) (ne .memberinfo.portrait "/0")}} src="{{.memberinfo.portrait}}" {{else}} src="/static/wx/template/img/a.jpg" {{end}}></div>
+				<div class="mt-users">
+					<dl>
+						<dt>{{if .memberinfo.name}} {{.memberinfo.name}} {{else}} {{.memberinfo.monicker}} {{end}}</dt>
+						<dd><span class="mui-icon iconfont">&#xe936;</span> 中国 {{.memberinfo.shen}} {{.memberinfo.shi}}</dd>
+						<dd><span class="mui-icon iconfont">&#xe8a7;</span> 积分：{{.memberinfo.integral}} <span class="mui-icon iconfont">&#xe8c9;</span> 余额：{{.memberinfo.money}}</dd>
+					</dl>
+				</div>
+				<div class="mt-jurisdiction">
+					{{if eq .memberinfo.type "0"}}
+					员工
+					{{else if eq .memberinfo.type "1"}}
+					普通会员
+					{{else if eq .memberinfo.type "2"}}
+					管理员
+					{{else}}
+					经销商
+					{{end}}
+				</div>
+			</div>
+<div class="topselect">
+	<div {{if eq .readstate ""}} class="topfilter selectedfilter"{{else}} class="topfilter "{{end}}  id="readall" >全部</div>
+	<div {{if eq .readstate "1"}} class="topfilter selectedfilter"{{else}} class="topfilter"{{end}}  id="read1">主动确认</div>
+	<div {{if eq .readstate "2"}} class="topfilter selectedfilter"{{else}} class="topfilter"{{end}} id="read2">自动确认</div>
+	<div {{if eq .readstate "-1"}} class="topfilter selectedfilter"{{else}} class="topfilter"{{end}}  id="read-1">已拒绝</div>
+	<div {{if eq .readstate "3"}} class="topfilter selectedfilter"{{else}} class="topfilter"{{end}}  id="read3">已阅读未确认</div>
+	<div {{if eq .readstate "0"}} class="topfilter selectedfilter"{{else}} class="topfilter"{{end}} id="read0">未查看</div>
+</div>
+				{{if .task}}
+			<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed " id="tasklist">
+				{{range .task}}
+				<li class="mui-table-view-cell mui-media">
+					<div class="mui-slider-handle">
+						<a href="/wechat/taskdetail?id={{.id}}">
+							<div class="mui-table">
+								<div class="mui-table-cell mui-col-xs-10 mt-renwu new_see">
+									<div class="productpic see_header">
+										<img {{if .portrait}} src="{{.portrait}}" {{else}} src="/static/wx/template/img/a.jpg" {{end}}>
+									</div>
+									<div class="productcontent see_box">
+										<h1>
+											<span class="biaoti">{{.title}}</span>
+											{{if eq .read "1"}}
+											<span class="newbt mui-badge-primary">主动确认</span>
+											{{else}}
+											{{if eq .read "2"}}
+											<span class="newbt mui-badge-primary">自动确认</span>
+											{{else}}
+											{{if eq .read "-1"}}
+											<span class="newbt mui-badge-danger">已拒绝</span>
+											{{else}}
+											{{if eq .read "3"}}
+											<span class="newbt mui-badge-danger">已阅读未确认</span>
+											{{else}}
+											<span class="newbt mui-badge-danger">未查看</span>
+											{{end}}
+											{{end}}
+											{{end}}
+											{{end}}
+										</h1>
+										<p>{{.content}}</p>
+									</div>
+								</div>
+							</div>
+							<div class="fb_time">
+								<span ><i class="iconfont a008">&#xe603;</i>完成时间:{{.limtime}}</span>
+								<span class="fr"><i class="iconfont dd5">&#xe8ef;</i>发布时间:{{.adtime}}</span>
+							</div>
+						</a>
+					</div>
+				</li>
+				{{end}}
+			</ul>
+			{{else}}
+			<div id="npic" class="npic">
+				<img src="/static/wx/template/img/zanwu.png" alt="">
+				<p>暂无任务</p>
+			</div>
+			{{end}}
+		</div>
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item" href="index.html">
+				<span class="mui-icon iconfont">&#xe8d9;</span>
+				<span class= "mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item" href="aboutus.html">
+				<span class="mui-icon iconfont">&#xe8a3;</span>
+				<span class="mui-tab-label">公司</span>
+			</a>
+			<a class="mui-tab-item" href="product.html">
+				<span class="mui-icon iconfont">&#xe885;</span>
+				<span class="mui-tab-label">产品</span>
+			</a>
+			<a class="mui-tab-item" href="news.html">
+				<span class="mui-icon iconfont">&#xe8bd;</span>
+				<span class="mui-tab-label">新闻</span>
+			</a>
+			<a class="mui-tab-item mui-active" href="user.html">
+				<span class="mui-icon iconfont">&#xe8f7;{{if ne .userremind "0"}}<span class="mui-badge">{{.userremind}}</span>{{end}}</span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>
+		<script src="/static/wx/template/js/app.js"></script>
+		<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script type="text/javascript" src="/static/wx/dropload/zepto.min.js"></script>
+		<script type="text/javascript" src="/static/wx/dropload/dropload.min.js"></script>
+	<script type="text/javascript">
+			var btnall = document.getElementById("readall");
+			btnall.addEventListener('click',function(){	
+								location.href="/wechat/stafftasklist";		
+			});	
+	
+			var btn0 = document.getElementById("read0");
+			btn0.addEventListener('click',function(){	
+								location.href="/wechat/stafftasklist?readstate=0";		
+			});	
+	
+			var btn1 = document.getElementById("read1");
+			btn1.addEventListener('click',function(){	
+								location.href="/wechat/stafftasklist?readstate=1";		
+			});	
+	
+			var btn2 = document.getElementById("read2");
+			btn2.addEventListener('click',function(){	
+								location.href="/wechat/stafftasklist?readstate=2";		
+			});	
+	
+			var btn3 = document.getElementById("read3");
+			btn3.addEventListener('click',function(){	
+								location.href="/wechat/stafftasklist?readstate=3";		
+			});	
+	
+			var btnrefuse = document.getElementById("read-1");
+			btnrefuse.addEventListener('click',function(){
+								location.href="/wechat/stafftasklist?readstate=-1";		
+			});	
+		</script>
+	<script type="text/javascript">
+			//上拉刷新
+			var index =1;
+		    // dropload
+		    $('.mui-content').dropload({
+		    	scrollArea : window,
+		    	loadDownFn : function(me){
+		    		var first = index *5
+		    		$.ajax({
+		    			type: 'post',
+		    			url: '/stafftasklistpullupfresh',
+		    			data:{first:first,uid:{{.uid}},readstate:{{.readstate}}},
+		    			dataType: 'json',
+		    			success: function(data){
+		    				index++;
+		    				if(!data){
+		    					mui.toast("暂无任务！");
+		    					$(".dropload-down").remove();
+		    				}else{
+		    					var html='';
+		    					for(var i=0;i<data.length;i++){
+		    						var li = document.createElement('li');
+		    						li.className = "mui-table-view-cell mui-media";
+		    						var html='';
+		    						var showreadstate;
+		    						switch (data[i].read){
+		    							case '0':showreadstate="未查看";break;
+		    							case '1':showreadstate="主动确认";break;
+		    							case '2':showreadstate="主动确认";break;
+		    							case '3':showreadstate="已阅读未确认";break;
+		    							case '-1':showreadstate="已拒绝";break;
+		    						}	
+		    							if (data[i].portrait) {
+		    								html+='<div class="mui-slider-handle"><a href="/wechat/taskdetail?id='+data[i].id+'"><div class="mui-table"><div class="mui-table-cell mui-col-xs-10 mt-renwu new_see"><div class="productpic see_header"><img src="/static/wx/template/img/a.jpg"></div><div class="productcontent see_box"><h1><span class="biaoti">'+data[i].title+'</span><span class="newbt mui-badge-danger">'+showreadstate+'</span></h1><p>'+data[i].content+'</p></div></div></div><div class="fb_time"><span><i class="iconfont a008">&#xe603;</i>完成时间:'+data[i].limtime+'</span><span class="fr"><i class="iconfont dd5">&#xe8ef;</i>发布时间:'+data[i].adtime+'</span></div></a></div>'
+		    							} else {
+		    								html+='<div class="mui-slider-handle"><a href="/wechat/taskdetail?id='+data[i].id+'"><div class="mui-table"><div class="mui-table-cell mui-col-xs-10 mt-renwu new_see"><div class="productpic see_header"><img src="'+data[i].portrait+'"></div><div class="productcontent see_box"><h1><span class="biaoti">'+data[i].title+'</span><span class="newbt mui-badge-danger">'+showreadstate+'</span></h1><p>'+data[i].content+'</p></div></div></div><div class="fb_time"><span><i class="iconfont a008">&#xe603;</i>完成时间:'+data[i].limtime+'</span><span class="fr"><i class="iconfont dd5">&#xe8ef;</i>发布时间:'+data[i].adtime+'</span></div></a></div>'
+		    							}
+		    						li.innerHTML = html;
+		    						document.getElementById("tasklist").appendChild(li);
+		    						var productpic =document.getElementsByClassName('productpic');
+									for (var j = 0; j < productpic.length; j++) {
+										var a = productpic[j].offsetWidth;
+										// console.log(a);
+										productpic[j].style.height=a+'px';
+									}
+		    					}
+
+		    				}
+								// 为了测试，延迟1秒加载
+								me.resetload();
+							},
+							error: function(xhr, type){
+								mui.toast("网络慢，请重新刷新!");
+							// 即使加载出错，也得重置
+							me.resetload();
+						}
+					});
+		    	}
+		    });
+		</script>
+		<script>
+            mui.init({
+                swipeBack:true //启用右滑关闭功能
+            });
+            //释放 nav 底部导航 a 链接
+            mui('.mui-tab-item').each(function () {
+                this.addEventListener('tap',function () {
+                    var url = this.getAttribute('href');
+                    window.location.href=url;
+                })
+            });
+		</script>
+		<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script>
+			wx.config({
+				debug: false,
+				appId: {{.share.appid}},
+				timestamp: {{.share.timestamp}},
+				nonceStr: {{.share.nonceStr}},
+				signature: {{.share.signature}},
+				jsApiList: [
+					'onMenuShareTimeline',
+					'onMenuShareAppMessage'
+				]
+			});
+			
+			wx.ready(function(){
+				{{range .systems}}
+				wx.onMenuShareAppMessage({
+					title: "{{.company}}",
+					desc: "{{.description}}",
+					link: location.href,
+					imgUrl: "https://www.nicerbt.com{{.pathname}}",
+					success: function () {
+						mui.toast("分享成功");
+					},
+					cancel: function () {
+						// 用户取消分享后执行的回调函数
+					}
+				});
+				wx.onMenuShareTimeline({
+					title: "{{.company}}",
+					link: location.href,
+					imgUrl: "https://www.nicerbt.com{{.pathname}}",
+					success: function () {
+						mui.toast("分享成功");
+					},
+					cancel: function () {
+						// 用户取消分享后执行的回调函数
+					}
+				});
+				{{end}}
+				
+			});
+			wx.error(function (res) {
+				alert(res.errMsg);
+			});
+		</script>
+		<script type="text/javascript">
+			var productpic =document.getElementsByClassName('productpic');
+			for (var i = 0; i < productpic.length; i++) {
+				var a = productpic[i].offsetWidth;
+				console.log(a);
+				productpic[i].style.height=a+'px';
+			}
+		</script>
+		<div class="mt-statistics">统计代码</div>
+	</body>
+</html>

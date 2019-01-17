@@ -1,0 +1,7 @@
+https://www.jianshu.com/p/ac94989215d6
+
+
+
+time.AfterFunc(time.Duration(3600*time.Second), func() {
+models.Exec("update mt_task set `read`=2  where id=" + id)
+})

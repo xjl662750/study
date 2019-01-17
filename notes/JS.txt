@@ -1,0 +1,6 @@
+mui.each(t1,function(index,t1){
+deletetag('newaddstaff',t1);
+})
+
+mui.each边遍历标签边删除造成隔一个删除
+因为删除一个标签时,当前节点向下移动一个

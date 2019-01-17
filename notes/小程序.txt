@@ -1,0 +1,15 @@
+小程序显示网页
+<web-view src="https://mp.weixin.qq.com/"></web-view>
+
+富文本内容替换
+ replaceAll: function (str, oldstr, newstr) {
+    return str.replace(new RegExp(oldstr, "gm"), newstr);
+  },
+ res.data.content = that.replaceAll(res.data.content, "/static", "https://www.nicerbt.com/static");
+
+微信小程序返回顶部
+  if (wx.pageScrollTo) {
+      wx.pageScrollTo({
+        scrollTop: 0
+      })
+    }

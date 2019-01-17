@@ -1,0 +1,48 @@
+1.//实现前导零出错:sn:="7DC3"+fmt.printf("%05d",  uint16(rawdata[2])&0xFF+uint16(rawdata[1]))
+
+&:[fmt.Printf返回的是一个int和一个error,不能与string用+号一起操作]
+
+sn := fmt.Sprintf("%s%05d", "7DC3", uint16(rawdata[2])&0xFF+uint16(rawdata[1]))或fmt.Sprintf("7DC3%05d",uint16(rawdata[2])&0xFF+uint16(rawdata[1]))
+
+2.//fmt.Sprint不能输出
+
+&:根据fmt包API描述,fmt.Sprint是返回字符串,与fmt.Print的标准输出不同.
+
+3.//go run *.go,且*.go引用同一packge中其他文件的函数时,提示undefined "函数名"
+
+&:[go run 时,只会编译当前文件再运行,没有导入其他文件的自定义函数]要先go build 再运行./*
+
+4.//func FormatInt(i int64, base int) string,base的意思
+
+&:base表示进制,如八进制(8),十进制(10)等
+
+5.//在if..else中定义同一个变量出错
+
+&:在golang语法中必须在外面先定义好,再在if..else结构中使用.
+
+6.//go build/install 出错
+
+&:执行命令时需两个条件GOPATH和当前目录下有*.go的文件
+
+7.//panic template: unexpected EOF
+
+&:可能是{{}}标签没有闭合
+
+8.//error信息中template(*Template).Execute
+
+&:检查顺序:先确认go代码正确,然后看调用的模板名称是否正确或已存在,最后检查模板中的golang标签是否正确(或关闭)
+
+9.//http.Get("www.ip138.com") unsupported protocol scheme ""
+
+&:使用http.Get时必须写明使用的协议,应使用http.Get("http://www.ip138.com")
+
+10.//can't load package: package .: found packages xxx...
+
+&:each package must be defined in its own directory.给其他package xxx(除main)添加文件夹即可.
+
+11.xxx has arguments but cannot be invoked as function
+
+源码:"{{else if .Status 0}}",修正后:"{{else if eq .Status 0}}"(使用模板函数时却没指定函数名)
+
+12.invalid memory address or nil pointer dereference
+未在app.conf里设置sessionon = true导致sessionon不可用

@@ -1,0 +1,27 @@
+sc := models.Query("SELECT *FROM mt_column where sid=0")
+
+	for _, v := range sc {
+
+		sc1 := models.Query("SELECT *FROM mt_column where sid=" + v["id"].(string))
+		v["column1"] = sc1
+
+	}
+
+	c.Data["column"] = sc
+
+<div class="column">
+				{{range .column}}
+				<dl>
+					<dt><a href="column_edit.html?id={{.id}}">{{.name}}</a></dt>
+					<dd>
+						<ul>{{range .column1}}
+							<li><a href="column_edit.html?id={{.id}}">{{.name}}</a></li>
+
+							{{end}}
+						</ul>
+					</dd>
+				</dl>
+				{{end}}
+				
+
+			</div>

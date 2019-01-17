@@ -1,0 +1,63 @@
+https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/preface.md
+
+
+jquery-3.2.1.min.js未导入
+用联网的就可以，例如：
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"
+
+ajax sucess:function(res)
+res
+由
+c.Data["json"] = 0
+c.ServeJSON()
+返回
+
+html2str
+实现了把html转化为字符串，剔除一些script、css之类的元素，返回纯文本信息，使用方法{{html2str .Htmlinfo}}
+
+
+String.Split (url,/)
+基于数组中的字符将字符串拆分为多个子字符串
+
+GO语言中要提供给外面访问的方法或是结构体名和结构体中字段首字母必须是首字母大写。
+
+panic template: unexpected EOF
+&:可能是{{}}标签没有闭合
+
+
+input.Add("avatar", avatart)
+input.Del("avatar")
+input.Add(key, value)
+input.Del(key)
+先删除从前台获取的值再添加
+
+interface类型转换成原本存入的值类型（注意：只能转换为原来的类型）
+先转成原来的再进行转换
+t1 := v["addtime"].(string)
+t2, _ := strconv.ParseInt(t1, 10, 64)
+
+ // 自动建表
+    orm.RunSyncdb("default", false, true)
+
+
+Numeric(10,2) 指字段是数字型,长度为10 小数为两位的 ；
+
+"github.com/astaxie/beego"
+调试beego.Debug(pro)
+
+
+
+<canvas id="myCanvas" style="display: none"></canvas>
+在HTML5中新增的标签用于在网页实时生成图像，并且可以操作图像内容，基本上它是一个可以用JavaScript操作的位图（bitmap）。
+
+
+
+ 表单（form）的控件名，提交的数据都用控件的name而不是id来控制。因为有许多name会同时对应多个控件，比如checkbox和radio，而id必须是全文档中唯一的。此外浏览器会根据name来设定发送到服务器的request。因此如果用id，服务器是无法得到数据的。
+
+
+beego用mysql语句注意双引号处的空格
+
+查询避免Unknown column ‘xxx’ in ‘where clause’
+拼凑sql语句时对字符类型数据没有用引号引起来造成的
+issuerName="+issueName"
+issuerName='"+issueName+"'";

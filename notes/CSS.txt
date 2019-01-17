@@ -1,0 +1,15 @@
+calc(100vh-89px)动态计算
+vh:相对于视口的高度。视口被均分为100单位的vh
+
+为什么2个相邻div的margin只有1个生效:
+https://blog.csdn.net/qq_30541261/article/details/71440467
+.box1{margin:10px 0;}
+.box2{margin:20px 0;}
+
+
+<div class="box1">box1</div>
+<div class="box2">box2</div>
+本例中box1的底部margin为10px，box2的顶部margin为20px，但表现在页面上2者之间的间隔为20px，而不是预想中的10+20px=30px，结果是选择2者之间最大的那个margin，我们把这种机制称之为“外边距合并”；外边距合并不仅仅出现在相邻的元素间，父子间同样会出现。
+
+nth-child(n) 选择器匹配属于其父元素的第 N 个子元素，不论元素的类型。
+Odd 和 even 是可用于匹配下标是奇数或偶数的子元素的关键词（第一个子元素的下标是 1）

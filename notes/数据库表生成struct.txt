@@ -1,0 +1,6 @@
+参考https://blog.csdn.net/skh2015java/article/details/78846655
+-----------------------------------------------------------------------------------------
+  <!-- 删除Mapper后struct名就是数据库表名 -->
+
+
+xorm reverse mysql root:@/zswx?charset=utf8 /Go/bin/src/github.com/go-xorm/cmd/xorm/templates/go  /Go/bin/src/mod

@@ -1,0 +1,175 @@
+{{template "admin/public/head.html" .}}
+<section>
+	<aside>
+		{{template "admin/public/nav.html" .}}
+	</aside>
+	<article>
+		<div class="top-title">
+			<dl>
+				<dt><h1>{{.title}}</h1></dt>
+				<dd>&nbsp;</dd>
+				<dd><a href="wood_help.html"><i class="iconfont">&#xe649;</i>帮助文档</a></dd>
+			</dl>
+		</div>
+		<!-- <div class="nav1">
+			<ul>
+				<a href="works_index.html" class="no"><li>全部产品</li></a>
+				<a href="works_index.html"><li>产品分类</li></a>
+				<a href="works_index.html"><li>产品分类</li></a>
+				<a href="works_index.html"><li>产品分类</li></a>
+				<a href="works_index.html"><li>产品分类</li></a>
+				<a href="works_index.html"><li>产品分类</li></a>
+			</ul>
+		</div> -->
+		<div class="content">
+			<!-- <div class="release">
+				<dl>
+					<dt><i class="iconfont">&#xe649;</i> <b>{{.title}}说明</b><br>
+						下方是{{.title}}列表,可以进行添加,修改,删除<br>
+					</dt>
+				</dl>
+			</div> -->
+
+			<form action="" method="get" autocomplete="on" class="form">
+
+				<table class="table1">
+					<!-- 控制表格宽度  横向合并 colspan="1"  竖向合并 rowspan="3" -->
+					<thead><th width="10%"></th><th width="15%"></th><th width="10%"></th><th width="15%"></th><th width="10%"></th><th width="15%"></th><th width="10%"></th><th width="15%"></th></thead>
+					<tr>
+						<td class="genre">品牌名称</td>
+						<td colspan="3">
+							<input type="text" class="input95" placeholder="请输入品牌名称！" name="name" value="{{.info.name}}" id="inputstr">
+						</td>
+						<td class="genre">品牌首字母</td>
+						<td colspan="3">
+							<input type="text" class="input95" placeholder="请输入品牌名称！" name="namefirst" value="{{.info.namefirst}}" id="outputstr">
+						</td>
+					</tr>
+
+					<tr>
+						<td class="genre">审查</td>
+						<td colspan="3">
+							<label class="demo--label"><input class="demo--radio" type="radio" name="censoring" value="0" {{if .info}}{{if eq .info.censoring "0"}}checked{{end}}{{else}}checked{{end}}><span class="demo--radioInput"></span>未审查</label>
+							<label class="demo--label"><input class="demo--radio" type="radio" name="censoring" value="1" {{if .info}}{{if eq .info.censoring "1"}}checked{{end}}{{end}}><span class="demo--radioInput"></span>已审查</label>
+						</td>
+						<td class="genre">推荐</td>
+						<td colspan="3">
+							<label class="demo--label"><input class="demo--radio" type="radio" name="recommend" value="0" {{if .info}}{{if eq .info.recommend "0"}}checked{{end}}{{else}}checked{{end}}><span class="demo--radioInput"></span>未推荐</label>
+							<label class="demo--label"><input class="demo--radio" type="radio" name="recommend" value="1" {{if .info}}{{if eq .info.recommend "1"}}checked{{end}}{{end}}><span class="demo--radioInput"></span>已推荐</label>
+						</td>
+					</tr>
+					<tr>
+						<td class="genre">排序</td>
+						<td colspan="3"><input type="number" class="input95" placeholder="请输入排序！" value="{{.info.sort}}" name="sort"></td>
+						<!-- <td class="genre">阅读数</td>
+						<td colspan="3"><input type="number" class="input95" placeholder="请输入阅读数！" value="{{.info.click}}" name="click"></td> -->
+						<!-- <td class="genre">语言</td>
+						<td>
+							<select name="cars" class="select95">
+								<option value="cn">中文</option>
+								<option value="en">英文</option>
+							</select>
+						</td> -->
+					</tr>
+					<tr>
+						<td class="genre">logo</td>
+						<td colspan="7">
+							<div class="thumbnail">
+								<dl><dt><img src="{{.info.pathname}}" class="uppic"><input type="file" onchange="uppic(this,'function')" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg">
+									<input type="hidden" name="logo" value="{{.info.logo}}"></dt><dd>logo</dd><dd class="del_img">删除图片</dd></dl>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="genre">说明</td>
+						<td colspan="7">
+							<textarea placeholder="请输入说明，200字内。" class="textarea95" name="instruction">{{.info.instruction}}</textarea>
+						</td>
+					</tr>
+					<input type="hidden" name="id" value="{{.info.id}}">
+			</form>
+					<tr class="trbutton">
+						<td colspan="2"><button type="button" class="button">保存</button></td>
+						<td colspan="6">
+							<p>
+								<i class="iconfont">&#xe649;</i> 请检查内容确认发布的内容没有涉及传播谣言、政治话题或违反广告法夸大宣传产品等。
+							</p>
+							<div class="help">帮助
+								<div class="help_qr"><img src="/static/all/qr-code.jpg" alt=""></div>
+							</div>
+						</td>
+					</tr>
+				</table>
+
+
+		</div>
+	</article>
+</section>
+
+<footer><!-- 系统监控内容 --></footer>
+	<script src="/static/admin/js/jquery.jedate.min.js"></script>
+	<script src="/static/admin/js/toast.js"></script>
+	<script src="/static/admin/js/uppic.js"></script>
+	<script src="/static/admin/js/xcConfirm.js"></script>
+	<script src="/static/admin/js/app.js"></script>
+	<script src="/static/admin/js/py.js"></script>
+	<script type="text/javascript">
+		$(function() {
+  $("#inputstr").keyup(function(){
+                 var str = $(this).val();
+				 var getArr = str.split("");
+                 var strreverse = "";
+   // for(var i=0; i<getArr.length; i++) { 
+			strreverse =checkCh(getArr[0]);
+          // } 
+                 $("#outputstr").val(strreverse);
+			});   
+			     
+			 
+	});
+ 
+  
+function checkCh(ch)  
+{    
+    var uni = ch.charCodeAt(0);    
+    //如果不在汉字处理范围之内,返回原字符,也可以调用自己的处理函数    
+    if(uni > 40869 || uni < 19968)  {
+    	if ((uni>=65&&uni<=90)||(uni>=97&&uni<=122))
+    {return ch.toUpperCase();}  
+    return "#"; }//dealWithOthers(ch);    
+    // //检查是否是多音字,是按多音字处理,不是就直接在strChineseFirstPY字符串中找对应的首字母    
+    // return (oMultiDiff[uni]?oMultiDiff[uni]:(strChineseFirstPY.charAt(uni-19968)));   
+    //多音字不处理 
+    return strChineseFirstPY.charAt(uni-19968)
+} 
+	</script>
+<script>
+	$('.button').click(function(){
+		if (!$('input[name="name"]').val()){
+			window.wxc.xcConfirm("请输入品牌名称！","info"); return false;
+		}
+		if (!$('input[name="logo"]').val()){
+			window.wxc.xcConfirm("请上传logo！","info"); return false;
+		}
+		if (!$('textarea[name="instruction"]').val()){
+			window.wxc.xcConfirm("请输入说明！","info"); return false;
+		}
+		var form=$('form').serialize()
+		$.ajax({
+			url:window.location.href,
+			data:form,
+			type:'post',
+			success:function(res){
+				if(res==1){
+					 window.wxc.xcConfirm("保存成功","success",{onClose:function(){
+                        window.location.href = document.referrer
+                    }})
+				}else {
+					 window.wxc.xcConfirm("保存失败,请重试!","error")
+				}
+			}
+		})
+	});
+</script>
+</body>
+</html>

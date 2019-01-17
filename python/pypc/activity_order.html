@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>定制程序</title>
+    <style>
+        * {
+        margin: 0;
+        padding: 0;
+        outline: none;
+    }
+    .box {
+    	max-width: 640px;
+    	margin: 0 auto;
+    }
+
+    .bg {
+        width: 100%;
+        display: block;
+    }
+    .scroll {
+    	position: relative;
+    }
+    .notice {
+    	position: absolute;
+    	bottom: 0;
+    	overflow: hidden;
+    }
+    .notice ul {
+    	height: 103px;
+    	
+    	position: relative;
+    	top: 31px;
+    }
+    .notice li {
+    	background-color: #fff;
+    	border-radius: 50px;
+    	height: 26px;
+    	list-style: none;
+    	font-size: 14px;
+    	margin-bottom: 10px;
+    	margin-left: 10px;
+    	visibility:visible;
+    	opacity: .3;
+    }
+    .notice li:nth-child(1){
+    	opacity: 1;
+    }
+    .notice img { 
+    	width: 26px;
+    	height: 26px;
+    	border-radius: 50%;
+    	vertical-align: middle; 
+     }
+     .notice span {
+     	vertical-align: middle; 
+		padding: 0 5px;
+     }
+     .twinkle {
+     	position: relative;
+
+     }
+     .twinkle .imgBox {
+     	position: absolute;
+     	bottom: 0;
+     	margin: 0 auto;
+     }
+     .twinkle .imgBox img {
+     	width: 100%;
+     	display: block;
+     }
+      .write {
+      	margin-bottom: 10px;
+      }
+     .write .title {
+     	height: 50px;
+     	background-color: #f3f3f3;
+     	line-height: 50px;
+     	text-align: center;
+     	font-size: 16px;
+     	font-weight: 600;
+     }
+     
+     .fl {
+     	/*display: inline-block;*/
+     	/*width: 76%;*/
+     	/*padding-left: 75px;*/
+     	overflow: hidden;
+     }
+
+     .clearfix:before,.clearfix:after {
+      content: "";
+      display: block;
+      clear: both;
+}
+.clearfix {
+      zoom: 1;
+}
+/*提交订单*/
+.content {
+	padding: 10px;
+}
+.tips {
+	/*margin-right: 20px;*/
+	width: 60px;
+	display: inline-block;
+	vertical-align: top;
+	color: #333;
+	float: left;
+}
+.tips span:first-child{
+	color: red;
+}
+.tips span:last-child{
+	font-weight: 600;
+	margin-left: 5px;
+}
+form>div {
+	margin-bottom: 10px;
+}
+.md {
+	line-height: 40px;
+	}
+.price-r {
+	font-size: 12px;
+}
+.price-r input{
+	width: 18px;
+	height: 18px;
+	vertical-align: middle;
+	position: relative;
+	top: -3px;
+}
+.price-r span {
+	font-size: 18px;
+	font-weight: 600;
+	padding: 0 5px;
+	color: #333;
+}
+
+.fullName-r,.phone-r {
+	box-sizing:  border-box;
+
+}
+.fullName-r input,.phone-r input {
+	border-radius: 4px;
+	box-shadow: none;
+	border-width: 1px;
+	border: 1px solid #c5c5c5;
+	height: 40px;
+	padding: 3px 10px;
+	width: 100%;
+	box-sizing:  border-box;
+	font-size: 14px;
+	color: #333;
+}
+.phone-r {
+
+}
+.industry-r {
+	line-height: 40px;
+	display: flex;
+	justify-content: space-between;
+	font-size: 18px;
+}
+.industry-r input{
+	width: 18px;
+	height: 18px;
+	vertical-align: middle;
+	margin-right: 5px;
+	position: relative;
+	top: -1px;
+}
+
+.message-r textarea{
+	border-radius: 4px;
+	box-shadow: none;
+	border-width: 1px;
+	border: 1px solid #c5c5c5;
+	height: 100px;
+	padding: 3px 10px;
+	width: 100%;
+	font-size: 14px;
+	box-sizing:  border-box;
+	color: #333;
+}
+
+.putIn {
+	width: 100%;
+	box-sizing:  border-box;
+	border-radius: 4px;
+	box-shadow: none;
+	border-width: 1px;
+	border: none;
+	height: 50px;
+	color: #fff;
+	font-size: 16px;
+	background-color: #cc2244;
+}
+
+
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="scroll">
+            <img class="bg" src="http://www.cisma360.com/static/img/wechat/20181113new/34a65832955b307ab9ba21562433af7_01.jpg" alt="">
+            <div class="notice">
+                <ul>
+                    <li>
+                        <img src="http://www.cisma360.com/static/img/wechat/20181113new/u=476370249,2746740568&fm=26&gp=0.jpg" alt="">
+                        <span>大家今天都好吗？</span>
+                    </li>
+                    <li>
+                        <img src="http://www.cisma360.com/static/img/wechat/20181113new/u=476370249,2746740568&fm=26&gp=0.jpg" alt="">
+                        <span>111111</span>
+                    </li>
+                    <li>
+                        <img src="http://www.cisma360.com/static/img/wechat/20181113new/u=476370249,2746740568&fm=26&gp=0.jpg" alt="">
+                        <span>22222222</span>
+                    </li>
+                    <li>
+                        <img src="http://www.cisma360.com/static/img/wechat/20181113new/u=476370249,2746740568&fm=26&gp=0.jpg" alt="">
+                        <span>3333333</span>
+                    </li>
+                    <li>
+                        <img src="http://www.cisma360.com/static/img/wechat/20181113new/u=476370249,2746740568&fm=26&gp=0.jpg" alt="">
+                        <span>4444444</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="twinkle">
+            <img class="bg" src="http://www.cisma360.com/static/img/wechat/20181113new/34a65832955b307ab9ba21562433af7_02.jpg" alt="">
+            <div class="imgBox">
+                <img src="http://www.cisma360.com/static/img/wechat/20181113new/font.png" alt="">
+            </div>
+            </div>
+            <div class="img">
+                <img class="bg" src="http://www.cisma360.com/static/img/wechat/20181113new/34a65832955b307ab9ba21562433af7_03.jpg" alt="">
+
+		</div>
+                <!--  =====================提交订单=======================  -->
+                <div class="write">
+                    <div class="title">
+                        提交订单
+                    </div>
+                    <div class="content">
+                        <form >
+                            <!-- +++++++++++价格++++++++++ -->
+                            <div class="price clearfix">
+                                <div class="tips ">
+                                    <span>*</span><span>价格</span>
+                                </div>
+                                <div class="price-r fl">
+                                    <div>
+                                        <label><input type="radio" name="price" value="0"><span>免费</span>说明：不包括上传资料服务</label>
+                                    </div>
+                                    <div>
+                                        <label><input type="radio" name="price" value="2000"><span>2000元/套</span>说明：服务到您满意，资料上传不用愁</label>
+                                    </div>
+                                </div>
+                                <p class="ttip" style=" display: none;margin-left: 60px; font-size: 12px; color: #f40;">请选择一项</p>
+                            </div>
+                            <!-- +++++++++++名字++++++++++ -->
+                            <div class="fullName clearfix">
+                                <div class="tips md">
+                                    <span>*</span><span>姓名</span>
+                                </div>
+                                <div class="fullName-r fl">
+                                    <input type="text" name="name" autocomplete="off" pattern="^[\u4E00-\u9FA5\uf900-\ufa2d·s]{2,20}$" required oninvalid="setCustomValidity('请输入您的姓名');" oninput="setCustomValidity('');">
+                                </div>
+                            </div>
+                            <!-- +++++++++++手机++++++++++ -->
+                            <div class="phone clearfix">
+                                <div class="tips md">
+                                    <span>*</span><span>手机</span>
+                                </div>
+                                <div class="phone-r fl">
+                                    <input type="text" autocomplete="off" pattern="^1[345678][0-9]{9}$" name="phone" required oninvalid="setCustomValidity('请输入正确的手机号码');" oninput="setCustomValidity('');">
+                                </div>
+                            </div>
+                            <!-- +++++++++++行业++++++++++ -->
+                            <div class="industry clearfix">
+                                <div class="tips md">
+                                    <span>*</span><span>行业</span>
+                                </div>
+                                <div class="industry-r fl">
+                                    <label><input class="yi" type="checkbox" name="industry" value="1">零件</label>
+                                    <label><input class="yi" type="checkbox" name="industry" value="2">整体</label>
+                                    <label><input class="yi" type="checkbox" name="industry" value="3">服装</label>
+                                </div>
+                                <p class="btip" style="display: none; margin-left: 60px; font-size: 12px; color: #f40;">请选择任意一项或多项</p>
+                            </div>
+                            <!-- +++++++++++留言++++++++++ -->
+                            <div class="message clearfix">
+                                <div class="tips">
+                                    <span>*</span><span>留言</span>
+                                </div>
+                                <div class="message-r fl">
+                                    <textarea required oninvalid="setCustomValidity('留言不能为空');" oninput="setCustomValidity('');" maxlength="1000" style="resize: none" name="message" cols="30" rows="10"></textarea>
+                                </div>
+                            </div>
+                            <input class="putIn" style="background-color:#cc2244;width: 100%;box-sizing:  border-box;border-radius: 4px;box-shadow: none; border-width: 1px;border: none; height: 50px;color: #fff;font-size: 16px;" type="button" value="立即抢购">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <script src="http://www.cisma360.com/static/js/admin/jquery-3.3.1.min.js"></script>
+            <script src="/static/mui/js/mui.min.js"></script>
+        <link href="/static/mui/css/mui.min.css" rel="stylesheet"/>
+            <script>
+            //滚动公告
+            setInterval(function() {
+                $('.notice ul').append($('.notice li').eq(0).removeAttr('style').clone())
+                $('.notice li').eq(0).animate({ opacity: 0 }, 500)
+                $('.notice li').eq(1).animate({ opacity: 1 }, 500)
+                $('.notice ul').animate({ top: 0 }, function() {
+                    // $('.notice ul').append($('.notice li').eq(0))
+                    $('.notice li').eq(0).remove()
+                    $('.notice ul').css({ top: 36 + 'px' })
+                })
+            }, 1000)
+
+            //文字闪烁效果
+         setInterval(function(){
+                $('.twinkle .imgBox').toggle()
+            },1000)
+
+            $('.putIn').click(function() {
+                //单选不能为空
+                if ($('input[type="radio"]').eq(0).prop('checked') == false && $('input[type="radio"]').eq(1).prop('checked') == false) {
+                    $('.ttip').show()
+                    return false
+                }
+
+
+                //多选不能为空
+                if (!($('.yi').eq(0).prop('checked') || $('.yi').eq(1).prop('checked') || $('.yi').eq(2).prop('checked'))) {
+                    $('.btip').show()
+                    return false
+                }
+                //mui初始化
+            mui.init({
+            });
+                var form = $('form').serialize()
+                $.ajax({
+                    url: "/wechat/activity/activity_order_submit",
+                    type: "post",
+                    data: form,
+                success: function(data) {
+                    if (data == "1") {
+                        mui.alert('抢购成功!', "", function(argument) {
+                           location.href="/wechat/index"
+                        });
+                    } else {
+                        mui.alert('抢购失败!');
+                    }
+                }
+            });
+
+
+
+
+                
+            })
+            $('input[type="radio"]').change(function() {
+                $('.ttip').hide()
+            })
+            $('.yi').change(function(){
+            	$('.btip').hide()
+            	if (!($('.yi').eq(0).prop('checked') || $('.yi').eq(1).prop('checked') || $('.yi').eq(2).prop('checked'))) {
+                    $('.btip').show()
+                    return false
+                }
+            })
+            </script>
+</body>
+
+</html>

@@ -1,0 +1,3 @@
+因为爬虫对象是https链接，导入一个ssl模块就可以解决问题，最后代码改成如下：
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context

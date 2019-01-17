@@ -1,0 +1,17 @@
+表的字段名和关键字相同时字段名在SQL语句加``(Tab上面一个)区分
+
+MySQL重置ID起始值
+truncate table mt_systems
+方法一，执行SQL：
+truncate table test; ?(这里假定你的表名test)
+这种方法好处是运行速度超快
+?
+方法二，执行如下SQL: (还是假定表名是test)
+delete from test;
+alter table `test` auto_increment=1;
+这种方法好处是可以从任何值开始，缺点是如果数据量大的话delete from test;非常耗时
+--------------------- 
+作者：foreverlove111 
+来源：CSDN 
+原文：https://blog.csdn.net/foreverlove111/article/details/80227408 
+版权声明：本文为博主原创文章，转载请附上博文链接！
