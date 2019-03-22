@@ -22,4 +22,11 @@ console.log(status); // 值为空
 status = Math.random();
 console.log( typeof (status))//string
 
+var statustest="cs"
+console.log(statustest)//cs
+console.log( typeof (statustest))//string
+statustest=["123","456"]
+console.log(statustest)//["123","456"]
+console.log( typeof (statustest))//object
+
     
