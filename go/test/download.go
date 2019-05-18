@@ -9,7 +9,7 @@ import (
 
 func main() {
 
-	resp, err := http.Get("http://www.baidu.com")
+	resp, err := http.Get("http://www.zjdz.cc/products_detail/productId=59.html")
 
 	if err != nil {
 

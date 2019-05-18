@@ -1,0 +1,6 @@
+https://blog.csdn.net/zhlelva/article/details/78792388
+
+SELECT id,(@rownum:=@rownum+1) AS rownum
+FROM test t,(SELECT @rownum:=0) r
+WHERE ***
+ORDER BY id DESC;
