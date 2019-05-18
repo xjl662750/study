@@ -2,5 +2,31 @@ mui.each(t1,function(index,t1){
 deletetag('newaddstaff',t1);
 })
 
-mui.each�߱�����ǩ��ɾ����ɸ�һ��ɾ��
-��Ϊɾ��һ����ǩʱ,��ǰ�ڵ������ƶ�һ��
+mui.each边遍历标签边删除造成隔一个删除
+因为删除一个标签时,当前节点向下移动一个
+
+
+Window 对象属性不要作为js变量
+js不会报错
+var status=[1234,2];
+    console.log(status)//1234,2
+    console.log(status[0])//1
+    console.log( typeof (status))//string
+
+console.log(name); //能打印出来随机值
+name = Math.random();
+console.log( typeof (name))//string
+
+
+console.log(status); // 值为空
+status = Math.random();
+console.log( typeof (status))//string
+
+var statustest="cs"
+console.log(statustest)//cs
+console.log( typeof (statustest))//string
+statustest=["123","456"]
+console.log(statustest)//["123","456"]
+console.log( typeof (statustest))//object
+
+    
