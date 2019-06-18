@@ -1,0 +1,4 @@
+https://blog.csdn.net/qingzhongren/article/details/52503137
+
+加了一个flag标识判断
+Jquery的each里面用return false代替break；return ture代替continue
